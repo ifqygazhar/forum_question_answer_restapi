@@ -1,0 +1,51 @@
+@startuml
+entity users{
+    id : Bigint
+    --
+    name : Varchar
+    username : Varchar [unique]
+    email : Varchar [unique]
+    email_verification
+    password : Varchar
+    crated_at : Time
+    updated_at : Time
+}
+
+entity questions{
+    id :Bigint
+    --
+    user_name : Varchar
+    title : Varchar
+    tags : Varchar
+    description : Text
+    crated_at : Time
+    updated_at : Time
+}
+
+entity answers{
+    id : Bigint
+    --
+    user_name : Varchar
+    comment : Varchar
+    question_id : Bigint
+    crated_at : Time
+    updated_at : Time
+}
+entity comments{
+    id : Bigint
+    --
+    user_name : Varchar
+    comment : Text
+    question_id : Bigint
+    answer_id : Bigint
+    crated_at : Time
+    updated_at : Time
+}
+
+users}|--o{questions
+users}|--o{answers
+users}|--o{comments
+questions}|--o{answers
+answers}|--o{comments
+
+@enduml

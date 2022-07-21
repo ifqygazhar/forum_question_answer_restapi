@@ -1,0 +1,46 @@
+     @startuml
+
+     actor "User" as user
+
+     node "Q and A application" {
+        node "Register" as register
+        node "Login" as login
+        node "Logout" as logout
+        node "Dashboard" as dash
+                node "Edit Profile" as editP
+                node "Delete Profile" as deleteP
+        node "Question" as question
+                node "View Question" as viewQ
+                node "Edit Question" as editQ
+                node "Delete Question" as deleteQ
+        node "Answer" as answer
+                node "View Answer" as viewA
+                node "Edit Answer" as editA
+                node "Delete Answer" as deleteA
+        node "comment" as comment
+                node "View Comment" as viewC
+                node "Edit Comment" as editC
+                node "Delete Comment" as deleteC
+     }
+
+     user --> register : 1
+     user --> login : 2
+     user --> dash : 3
+              dash --> editP
+              dash --> deleteP
+     dash --> question : 4
+     question --> answer : 5
+             question --> viewQ
+             question --> editQ
+             question --> deleteQ
+     answer --> comment : 6
+              answer --> viewA
+              answer --> editA
+              answer --> deleteA
+     comment --> viewC
+     comment --> editC
+     comment --> deleteC
+
+     user --> logout : 7
+
+     @enduml
